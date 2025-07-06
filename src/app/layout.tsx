@@ -7,7 +7,7 @@ import {
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, use } from "react";
 import { shadcnTheme } from "@/theme/theme";
 import { shadcnCssVariableResolver } from "@/theme/cssVariableResolver";
 import "@/theme/style.css";
