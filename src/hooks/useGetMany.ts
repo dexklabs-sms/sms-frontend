@@ -19,7 +19,7 @@ export function useGetMany<T>({
   filter,
   queryKey,
 }: IParams) {
-  const query = useQuery({
+  return useQuery({
     queryKey: queryKey ?? [resource, page, perPage, sort, filter],
 
     async queryFn({ signal }) {
@@ -31,11 +31,4 @@ export function useGetMany<T>({
       return response.data;
     },
   });
-
-  return {
-    data: query.data,
-    isLoading: query.isLoading,
-    isError: query.isError,
-    query,
-  } as const;
 }

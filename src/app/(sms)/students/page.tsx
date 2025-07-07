@@ -16,8 +16,9 @@ import axios from "axios";
 import { PaginatedResponse, User } from "./types";
 import { use, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useGetMany } from "@/hooks/use-get-many";
+import { useGetMany } from "@/hooks/useGetMany";
 import { useGetSingle } from "@/hooks/useGetSingle";
+import { useCreate } from "@/hooks/useCreate";
 
 export default function StudentsPage() {
   const [page, setPage] = useState(1);
@@ -29,6 +30,18 @@ export default function StudentsPage() {
   });
 
   const singleStudent = useGetSingle<User>({ resource: "users", id: 1 });
+
+  const createStudentMutation = useCreate<{ name: string }>({
+    resource: "users",
+    onSuccess: (data) => {
+      console.log(data);
+    },
+    onError: (data) => {
+      console.error(data);
+    },
+  });
+
+  createStudentMutation.mutate({ name: "test" });
 
   const rows = data?.users.map((row) => (
     <TableTr key={row.id}>
