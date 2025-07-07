@@ -4,8 +4,8 @@ import { axiosAuthenticatedClient } from "@/lib/axios";
 interface IParams {
   resource: string;
   id: string | number;
-  successMessage?: string;
-  errorMessage?: string;
+  successMessage: string;
+  errorMessage: string;
   onSuccess?: () => void | Promise<void>;
   onError?: () => void | Promise<void>;
 }
