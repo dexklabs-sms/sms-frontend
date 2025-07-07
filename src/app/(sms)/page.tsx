@@ -3,6 +3,7 @@
 import { Badge, Button, Paper, Stack, TextInput } from "@mantine/core";
 import { useEffect } from "react";
 import { axiosAuthenticatedClient } from "@/lib/axios";
+import Link from "next/link";
 
 export default function Home() {
   useEffect(() => {
@@ -21,7 +22,9 @@ export default function Home() {
           </div>
 
           <div>
-            <Button> Click Me </Button>
+            <Button component={Link} href={"/students"}>
+              To Students
+            </Button>
           </div>
 
           <TextInput

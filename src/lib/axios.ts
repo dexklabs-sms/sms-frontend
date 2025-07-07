@@ -12,7 +12,7 @@ axiosAuthenticatedClient.interceptors.request.use(async (config) => {
   }
 
   config.headers ??= {} as AxiosRequestHeaders;
-  config.headers.Authorization = "Bearer " + session?.token;
+  if (session) config.headers.Authorization = "Bearer " + session?.token;
 
   return config;
 });
