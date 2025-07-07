@@ -29,20 +29,6 @@ export default function StudentsPage() {
     perPage: 10,
   });
 
-  const singleStudent = useGetSingle<User>({ resource: "users", id: 1 });
-
-  const createStudentMutation = useCreate<{ name: string }>({
-    resource: "users",
-    onSuccess: (data) => {
-      console.log(data);
-    },
-    onError: (data) => {
-      console.error(data);
-    },
-  });
-
-  createStudentMutation.mutate({ name: "test" });
-
   const rows = data?.users.map((row) => (
     <TableTr key={row.id}>
       <TableTd>{row.firstName + " " + row.lastName}</TableTd>

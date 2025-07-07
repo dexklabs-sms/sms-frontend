@@ -2,6 +2,8 @@ import { QueryKey, useQuery } from "@tanstack/react-query";
 import { PaginatedResponse, User } from "@/app/(sms)/students/types";
 import { axiosAuthenticatedClient } from "@/lib/axios";
 
+// filters and sort are now string, later to be changed
+
 interface IParams {
   resource: string;
   page?: number;
