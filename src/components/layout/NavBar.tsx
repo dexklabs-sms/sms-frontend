@@ -1,4 +1,4 @@
-import { Box, Button, Group, Stack, Text } from "@mantine/core";
+import { Box, Button, Stack, Text } from "@mantine/core";
 
 import { MantineLogo } from "@mantinex/mantine-logo";
 

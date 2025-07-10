@@ -9,7 +9,7 @@ interface IParams<T> {
   page?: number;
   perPage?: number;
   sort?: { by: string; order: "asc" | "desc" };
-  filter?: Record<string, any>;
+  filter?: Record<string, unknown>;
   queryKey?: QueryKey;
   search?: string;
   queryOptions?: Omit<
@@ -31,7 +31,7 @@ export function useGetMany<T>({
   return useQuery({
     queryKey: queryKey ?? [resource, page, perPage, sort, filter, search],
     async queryFn({ signal }) {
-      const params: Record<string, any> = {
+      const params: Record<string, unknown> = {
         ...(filter ?? {}),
         perPage: perPage,
         page,

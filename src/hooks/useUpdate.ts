@@ -15,8 +15,8 @@ interface IParams<TVariable, TData, TError> {
 }
 
 export function useUpdate<
-  TVariable extends Record<string, any>,
-  TData = any,
+  TVariable extends Record<string, unknown>,
+  TData = unknown,
   TError = DefaultError,
 >(params: IParams<TVariable, TData, TError>) {
   return useMutation<TData, TError, TVariable>({

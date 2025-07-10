@@ -26,7 +26,7 @@ export default function StudentsPage() {
           highlightOnHover
           fetching={isLoading}
           // provide data
-          records={data?.users!}
+          records={data?.users ?? []}
           // define columns
           columns={[
             {
