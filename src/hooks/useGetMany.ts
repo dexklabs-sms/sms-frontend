@@ -33,12 +33,13 @@ export function useGetMany<T>({
     async queryFn({ signal }) {
       const params: Record<string, any> = {
         ...(filter ?? {}),
-        limit: 10,
-        skip: (page - 1) * 10,
+        perPage: 10,
+        page,
       };
 
       if (sort) {
-        params.sort = sort.by + ":" + sort.order;
+        params.sort = sort.by;
+        params.sortBy = sort.order;
       }
 
       if (search) {
