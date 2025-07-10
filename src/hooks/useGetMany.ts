@@ -33,7 +33,7 @@ export function useGetMany<T>({
     async queryFn({ signal }) {
       const params: Record<string, any> = {
         ...(filter ?? {}),
-        perPage: 10,
+        perPage: perPage,
         page,
       };
 

@@ -32,6 +32,12 @@ importers:
       axios:
         specifier: ^1.10.0
         version: 1.10.0
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      mantine-datatable:
+        specifier: ^8.1.2
+        version: 8.1.2(@mantine/core@8.1.2(@mantine/hooks@8.1.2(react@19.1.0))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@mantine/hooks@8.1.2(react@19.1.0))(clsx@2.1.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       next:
         specifier: 15.3.5
         version: 15.3.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1336,6 +1342,15 @@ packages:
   loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
+
+  mantine-datatable@8.1.2:
+    resolution: {integrity: sha512-3Q7aGQJTSck5yqtjOsZqCqD0fu8D+CVgUSB9I1fGjwueWRYo7KSIBQI4/OBxkdzwOk65MPHtRX9jDo1JsfD58A==}
+    peerDependencies:
+      '@mantine/core': '>=8.1'
+      '@mantine/hooks': '>=8.1'
+      clsx: '>=2'
+      react: '>=19'
+      react-dom: '>=19'
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -3317,6 +3332,14 @@ snapshots:
   loose-envify@1.4.0:
     dependencies:
       js-tokens: 4.0.0
+
+  mantine-datatable@8.1.2(@mantine/core@8.1.2(@mantine/hooks@8.1.2(react@19.1.0))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@mantine/hooks@8.1.2(react@19.1.0))(clsx@2.1.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@mantine/core': 8.1.2(@mantine/hooks@8.1.2(react@19.1.0))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@mantine/hooks': 8.1.2(react@19.1.0)
+      clsx: 2.1.1
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   math-intrinsics@1.1.0: {}
 
