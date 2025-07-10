@@ -1,7 +1,6 @@
 import type { DefaultError } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 import { axiosAuthenticatedClient } from "@/lib/axios";
-import { jsonToFormData } from "@/lib/jsonToFormData";
 
 interface IParams<TVariable, TData, TError> {
   resource: string;
@@ -22,7 +21,12 @@ export function useUpdate<
         `https://dummyjson.com/${params.resource}`,
         {
           method: params.method ?? "PATCH",
-          data: params.useFormData ? jsonToFormData(variables) : variables,
+          data: variables,
+          headers: {
+            "Content-Type": params.useFormData
+              ? "multipart/form-data"
+              : "application/json",
+          },
         },
       );
 
