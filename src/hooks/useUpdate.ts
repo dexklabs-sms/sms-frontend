@@ -1,4 +1,4 @@
-import type { DefaultError } from "@tanstack/react-query";
+import { DefaultError, MutationOptions } from "@tanstack/react-query";
 import { useMutation } from "@tanstack/react-query";
 import { axiosAuthenticatedClient } from "@/lib/axios";
 
@@ -8,6 +8,10 @@ interface IParams<TVariable, TData, TError> {
   onSuccess?: (data: TData, params?: TVariable) => void;
   onError?: (error: TError, params?: TVariable) => void;
   method?: "PATCH" | "PUT";
+  mutationOptions?: Omit<
+    MutationOptions<TData, TError, TVariable>,
+    "mutationFn" | "onSuccess" | "onError"
+  >;
 }
 
 export function useUpdate<
@@ -17,18 +21,15 @@ export function useUpdate<
 >(params: IParams<TVariable, TData, TError>) {
   return useMutation<TData, TError, TVariable>({
     async mutationFn(variables) {
-      const response = await axiosAuthenticatedClient(
-        `https://dummyjson.com/${params.resource}`,
-        {
-          method: params.method ?? "PATCH",
-          data: variables,
-          headers: {
-            "Content-Type": params.useFormData
-              ? "multipart/form-data"
-              : "application/json",
-          },
+      const response = await axiosAuthenticatedClient(params.resource, {
+        method: params.method ?? "PATCH",
+        data: variables,
+        headers: {
+          "Content-Type": params.useFormData
+            ? "multipart/form-data"
+            : "application/json",
         },
-      );
+      });
 
       return response.data;
     },
@@ -38,5 +39,6 @@ export function useUpdate<
     onError(error, variables) {
       params.onError?.(error, variables);
     },
+    ...(params.mutationOptions ?? {}),
   });
 }

@@ -1,16 +1,21 @@
-import { QueryKey, useQuery } from "@tanstack/react-query";
-import { PaginatedResponse, User } from "@/app/(sms)/students/types";
+import { QueryKey, useQuery, UseQueryOptions } from "@tanstack/react-query";
+import { PaginatedResponse } from "@/app/(sms)/students/types";
 import { axiosAuthenticatedClient } from "@/lib/axios";
 
 // filters and sort are now string, later to be changed
 
-interface IParams {
+interface IParams<T> {
   resource: string;
   page?: number;
   perPage?: number;
-  sort?: string;
-  filter?: string;
+  sort?: { by: string; order: "asc" | "desc" };
+  filter?: Record<string, any>;
   queryKey?: QueryKey;
+  search?: string;
+  queryOptions?: Omit<
+    UseQueryOptions<PaginatedResponse<T>>,
+    "queryKey" | "queryFn"
+  >;
 }
 
 export function useGetMany<T>({
@@ -20,17 +25,36 @@ export function useGetMany<T>({
   sort,
   filter,
   queryKey,
-}: IParams) {
+  search,
+  queryOptions = {},
+}: IParams<T>) {
   return useQuery({
-    queryKey: queryKey ?? [resource, page, perPage, sort, filter],
-
+    queryKey: queryKey ?? [resource, page, perPage, sort, filter, search],
     async queryFn({ signal }) {
+      const params: Record<string, any> = {
+        ...(filter ?? {}),
+        limit: 10,
+        skip: (page - 1) * 10,
+      };
+
+      if (sort) {
+        params.sort = sort.by + ":" + sort.order;
+      }
+
+      if (search) {
+        params.search = search;
+      }
+
       const response = await axiosAuthenticatedClient<PaginatedResponse<T>>(
-        `https://dummyjson.com/${resource}/search?limit=10&skip=${(page - 1) * 10}`,
-        { signal },
+        resource,
+        {
+          signal,
+          params,
+        },
       );
 
       return response.data;
     },
+    ...queryOptions,
   });
 }

@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { MutationOptions, useMutation } from "@tanstack/react-query";
 import { axiosAuthenticatedClient } from "@/lib/axios";
 
 interface IParams {
@@ -8,13 +8,17 @@ interface IParams {
   errorMessage: string;
   onSuccess?: () => void | Promise<void>;
   onError?: () => void | Promise<void>;
+  mutationOptions?: Omit<
+    MutationOptions,
+    "mutationFn" | "onSuccess" | "onError"
+  >;
 }
 
 export function useDelete(params: IParams) {
   return useMutation({
     async mutationFn() {
       const response = await axiosAuthenticatedClient(
-        `https://dummyjson.com/${params.resource}/${params.id}`,
+        `${params.resource}/${params.id}`,
         {
           method: "DELETE",
         },
@@ -30,5 +34,6 @@ export function useDelete(params: IParams) {
       console.log("error", params.errorMessage);
       if (params.onError) await params.onError();
     },
+    ...(params.mutationOptions ?? {}),
   });
 }

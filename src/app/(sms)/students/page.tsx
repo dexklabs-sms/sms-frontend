@@ -12,24 +12,20 @@ import {
   TableThead,
   TableTr,
 } from "@mantine/core";
-import axios from "axios";
-import { PaginatedResponse, User } from "./types";
-import { use, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { User } from "./types";
+import { useState } from "react";
 import { useGetMany } from "@/hooks/useGetMany";
-import { useGetSingle } from "@/hooks/useGetSingle";
-import { useCreate } from "@/hooks/useCreate";
 
 export default function StudentsPage() {
   const [page, setPage] = useState(1);
 
   const { data, isLoading } = useGetMany<User>({
-    resource: "users",
+    resource: "users/search",
     page,
     perPage: 10,
   });
 
-  const rows = data?.users.map((row) => (
+  const rows = data!.users.map((row) => (
     <TableTr key={row.id}>
       <TableTd>{row.firstName + " " + row.lastName}</TableTd>
       <TableTd>{row.email}</TableTd>
