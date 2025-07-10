@@ -20,6 +20,9 @@ importers:
       '@mantine/hooks':
         specifier: ^8.1.2
         version: 8.1.2(react@19.1.0)
+      '@mantinex/mantine-logo':
+        specifier: ^2.0.0
+        version: 2.0.0(@mantine/core@8.1.2(@mantine/hooks@8.1.2(react@19.1.0))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@mantine/hooks@8.1.2(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tanstack/react-query':
         specifier: ^5.81.5
         version: 5.81.5(react@19.1.0)
@@ -317,6 +320,14 @@ packages:
     resolution: {integrity: sha512-BrriTsiazqZ2fLuL7UDasNTQJSaoJ7mN2qYVkdsiYI158lxJdUaFWHhd6BDyzK+W6thvBx2D+R/hh1rsWWefdQ==}
     peerDependencies:
       react: ^18.x || ^19.x
+
+  '@mantinex/mantine-logo@2.0.0':
+    resolution: {integrity: sha512-HfO0twXEMoGftJGTVaixwI7ABUmyBafT/AQQM1MWKw4Q4ZwjMURKBxhz5JFGhc4MHysKRo2E3jaAtXuHydyfcA==}
+    peerDependencies:
+      '@mantine/core': '>=7.0.0'
+      '@mantine/hooks': '>=7.0.0'
+      react: ^18.x || ^19.x
+      react-dom: ^18.x || ^19.x
 
   '@napi-rs/wasm-runtime@0.2.11':
     resolution: {integrity: sha512-9DPkXtvHydrcOsopiYpUgPHpmj0HWZKMUnL2dZqpvC42lsratuBG06V5ipyno0fUek5VlFsNQ+AcFATSrJXgMA==}
@@ -2139,6 +2150,13 @@ snapshots:
   '@mantine/hooks@8.1.2(react@19.1.0)':
     dependencies:
       react: 19.1.0
+
+  '@mantinex/mantine-logo@2.0.0(@mantine/core@8.1.2(@mantine/hooks@8.1.2(react@19.1.0))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@mantine/hooks@8.1.2(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@mantine/core': 8.1.2(@mantine/hooks@8.1.2(react@19.1.0))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@mantine/hooks': 8.1.2(react@19.1.0)
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
 
   '@napi-rs/wasm-runtime@0.2.11':
     dependencies:

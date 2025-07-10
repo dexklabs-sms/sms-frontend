@@ -1,20 +1,11 @@
 "use client";
 
 import { Badge, Button, Paper, Stack, TextInput } from "@mantine/core";
-import { useEffect } from "react";
-import { axiosAuthenticatedClient } from "@/lib/axios";
 import Link from "next/link";
 
 export default function Home() {
-  useEffect(() => {
-    axiosAuthenticatedClient
-      .get("https://jsonplaceholder.typicode.com/todos/1")
-      .then((res) => res.data)
-      .then(console.log);
-  }, []);
-
   return (
-    <div style={{ padding: 40 }}>
+    <div style={{ padding: "var(--mantine-spacing-md)" }}>
       <Paper withBorder p={"xl"} maw={300}>
         <Stack>
           <div>

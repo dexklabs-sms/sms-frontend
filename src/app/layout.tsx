@@ -37,7 +37,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <MantineProvider
             theme={shadcnTheme}
             cssVariablesResolver={shadcnCssVariableResolver}
-            defaultColorScheme={"dark"}
+            defaultColorScheme={"light"}
           >
             {children}
           </MantineProvider>

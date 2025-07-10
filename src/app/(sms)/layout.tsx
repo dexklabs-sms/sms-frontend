@@ -2,6 +2,8 @@
 
 import { PropsWithChildren } from "react";
 import { auth0 } from "@/lib/auth0";
+import { AppShell, AppShellMain, AppShellNavbar, Box } from "@mantine/core";
+import { AppNavbar } from "@/components/layout/NavBar";
 
 export default async function Layout(props: PropsWithChildren) {
   const session = await auth0.getSession();
@@ -19,5 +21,30 @@ export default async function Layout(props: PropsWithChildren) {
     );
   }
 
-  return props.children;
+  return (
+    <AppShell
+      navbar={{ width: 250, breakpoint: "sm" }}
+      padding="sm"
+      layout={"alt"}
+    >
+      <AppShellNavbar withBorder={false} bg={"transparent"}>
+        <AppNavbar />
+      </AppShellNavbar>
+
+      <AppShellMain bg={"#FAFAFA"}>
+        <Box
+          style={{
+            width: "100%",
+            height: "calc(100vh - 32px)",
+            background: "white",
+            border: "1px solid #ECECECCC",
+            borderRadius: "var(--mantine-radius-default, 4px)",
+            overflow: "auto",
+          }}
+        >
+          {props.children}
+        </Box>
+      </AppShellMain>
+    </AppShell>
+  );
 }
