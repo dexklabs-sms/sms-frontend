@@ -17,6 +17,12 @@ export default function Home() {
               To Students
             </Button>
           </div>
+          <div>
+  <Button component={Link} href={"/dashboard"}>
+    To Dashboard
+  </Button>
+</div>
+
 
           <TextInput
             label={"First Name"}

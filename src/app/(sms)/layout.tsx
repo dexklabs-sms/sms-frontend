@@ -1,9 +1,10 @@
 "use server";
-
+import { theme } from "@/theme/theme";
 import { PropsWithChildren } from "react";
 import { auth0 } from "@/lib/auth0";
 import { AppShell, AppShellMain, AppShellNavbar, Box } from "@mantine/core";
 import { AppNavbar } from "@/components/layout/NavBar";
+
 
 export default async function Layout(props: PropsWithChildren) {
   const session = await auth0.getSession();
